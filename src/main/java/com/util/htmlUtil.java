@@ -6,9 +6,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 
-/**
- * @author Piconjo
- */
 public class htmlUtil {
     public static String convert(String html)
     {

@@ -1,5 +1,6 @@
 package com.bean;
 
+import java.math.BigDecimal;
 
 /*
  * CREATE TABLE `medicine` (
@@ -14,11 +15,29 @@ package com.bean;
 
 
 public class Medicine {
+    private Integer id;
     private String name;
     private String metric;
     private double price;
     private int leftnumber;
     private String short_desc;
+    public Medicine(Integer id, String name2, String metric2, BigDecimal price2, Integer leftnumber2, String short_desc2) {
+        this.id = id;
+        this.name = name2;
+        this.metric = metric2;
+        this.price = price2.doubleValue();
+        this.leftnumber = leftnumber2;
+        this.short_desc = short_desc2;
+    }
+    public Medicine(String name2, String metric2, BigDecimal price2, Integer leftnumber2, String short_desc2) {
+        this.name = name2;
+        this.metric = metric2;
+        this.price = price2.doubleValue();
+        this.leftnumber = leftnumber2;
+        this.short_desc = short_desc2;
+    }
+    public Medicine() {
+    }
     public String getName() {
         return name;
     }
@@ -48,6 +67,12 @@ public class Medicine {
     }
     public void setShort_desc(String short_desc) {
         this.short_desc = short_desc;
+    }
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
     }
     
 }

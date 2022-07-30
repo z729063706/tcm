@@ -22,7 +22,7 @@ public class medicineDao {
         return true;
     }
     public static List<Medicine> medicineList(Integer limInteger){
-        String sql = "SELECT * FROM MEDICINE LIMIT ? ";
+        String sql = "SELECT * FROM MEDICINE ORDER BY `SHORT_DESC` LIMIT ? ";
         QueryRunner qr = new QueryRunner(c3p0Util.dataSource);
         List<Medicine> res = null;
         ResultSetHandler<List<Medicine>> rsh = new BeanListHandler<Medicine>(Medicine.class);
@@ -32,5 +32,16 @@ public class medicineDao {
             e.printStackTrace();
         }
         return res;
+    }
+    public static Boolean updateMedecine(Medicine medicine){
+        String sql = " UPDATE MEDICINE SET NAME = ?, METRIC = ?, PRICE = ?, LEFTNUMBER = ?, SHORT_DESC = ? WHERE ID = ? ";
+        QueryRunner qr = new QueryRunner(c3p0Util.dataSource);
+        try {
+            qr.update(sql, medicine.getName(), medicine.getMetric(), medicine.getPrice(), medicine.getLeftnumber(), medicine.getShort_desc(), medicine.getId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
